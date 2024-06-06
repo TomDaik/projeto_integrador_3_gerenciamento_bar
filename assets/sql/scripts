@@ -1,0 +1,36 @@
+create table if not exists mesa(
+    id_mesa int primary key,
+    ocupantes int,
+    data_reserva date,
+    horario_reserva time,
+    status_mesa int,
+    lista_comandas varchar
+);
+
+create table if not exists comanda(
+    id_comanda int primary key,
+    valor_total decimal(10,2),
+    status_comanda varchar,
+    id_mesa_fk int,
+    foreign key (id_mesa_fk) references mesa(id_mesa),
+    lista_itens varchar
+);
+
+create table if not exists produto(
+    id_produto int primary key,
+    nome varchar,
+    preço decimal(10,2),
+    categoria varchar,
+    imagem varchar
+);
+
+create table if not exists item(
+    id_item int primary key,
+    quantidade int,
+    sub_total decimal(10,2),
+    id_produto_fk int,
+    id_comanda_fk int,
+    foreign key (id_produto_fk) references produto(id_produto),
+    foreign key (id_comanda_fk) references comanda(id_comanda),
+    lista_produto varchar
+);

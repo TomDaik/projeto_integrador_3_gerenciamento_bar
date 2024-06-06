@@ -62,5 +62,4 @@ public class HomeApplication implements ServletContextInitializer {
             app.addELResolver(new SpringBeanFacesELResolver());
         }
     }
-
 }
