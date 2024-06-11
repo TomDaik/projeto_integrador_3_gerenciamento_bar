@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:p="http://primefaces.org/ui">
-
+    xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>MESAS</title>
 </h:head>
@@ -9,23 +8,27 @@
     <h:form>
         <p:panel header="Mesas">
             <div class="card">
-                <p:commandButton type="button" value="MESA 1" styleClass="ui-button-success" action="home"/>
-                <p:commandButton type="button" value="MESA 2" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 3" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 4" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 5" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 6" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 7" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 8" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 9" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 10" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 11" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 12" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 13" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 14" styleClass="ui-button-success" />
-                <p:commandButton type="button" value="MESA 15" styleClass="ui-button-success" />
-        </div>
+                <p:button type="button" value="MESA 1" styleClass="ui-button-success" outcome="home.xhtml" />
+                <p:commandButton value="Mesa 2" type="button" styleClass="ui-button-success" onclick="PF('dlg2').show()"/>
+            </div>
+            <p:dialog header="MESA + (ID)" widgetVar="dlg2" minHeight="40" width="280" showEffect="fade" modal="true"
+                closeOnEscape="true">
+                <h:outputLabel for="ocupantes" value="Ocupantes: "/>
+                <p:inputText id="ocupantes" required="true" label="Ocupantes"/>
+                
+                <h:outputLabel for="data" value="Data: "/>
+                <p:inputText id="data" required="true" label="Data"/>
+
+                <h:outputLabel for="hora" value="Hora: "/>
+                <p:inputText id="hora" required="true" label="Hora"/>
+
+                <h:outputLabel for="total" value="Total: "/>
+                <p:inputText id="total" required="true" label="Total"/>
+
+                <p:button type="button" value="Abrir Comanda" styleClass="ui-button-success" outcome="comanda.xhtml" />
+            </p:dialog>
         </p:panel>
     </h:form>
 </h:body>
+
 </html>

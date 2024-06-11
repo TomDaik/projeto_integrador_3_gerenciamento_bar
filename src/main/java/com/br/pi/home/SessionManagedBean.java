@@ -21,10 +21,4 @@ public class SessionManagedBean {
     public void setMessage(String message) {
         this.message = message;
     }
-
-
-    public String goToPage2() {
-        // Qualquer lógica que você queira adicionar
-        return "home?faces-redirect=true";
-    }
 }

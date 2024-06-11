@@ -15,21 +15,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Mesa {
+public class Comanda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_mesa;
+    private Integer id_comanda;
 
-    private Integer ocupantes;
+    private Mesa mesa = new Mesa();//?????????? object
 
-    //data_reserva(criar)
+    private Float valor_total;
 
-    //horario_reserva(criar)
+    //enum statusComanda(criar)
 
-    //enum status(criar)
-    
-    //lista de comandas(criar)
+    //enum metodoPagamento(criar)
 
-    //metodo atualizarMapa(criar)
+    //lista de itens(criar)
+
 }
