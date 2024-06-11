@@ -1,4 +1,4 @@
-package com.br.pi.home;
+package com.br.pi.home.mesa;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,8 +28,6 @@ public class Mesa {
     //horario_reserva(criar)
 
     //enum status(criar)
-    
-    //lista de comandas(criar)
 
     //metodo atualizarMapa(criar)
 }

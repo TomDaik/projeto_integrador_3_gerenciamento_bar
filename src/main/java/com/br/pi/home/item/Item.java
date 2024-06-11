@@ -1,9 +1,15 @@
-package com.br.pi.home;
+package com.br.pi.home.item;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.br.pi.home.Produto;
+import com.br.pi.home.comanda.Comanda;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +35,5 @@ public class Item {
 
     private Float sub_Total;
 
-    //list de produtos
+    //private List<Produto> produtos = new ArrayList<>();
 }
