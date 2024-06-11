@@ -13,19 +13,23 @@
             </div>
             <p:dialog header="MESA + (ID)" widgetVar="dlg2" minHeight="40" width="280" showEffect="fade" modal="true"
                 closeOnEscape="true">
-                <h:outputLabel for="ocupantes" value="Ocupantes: "/>
-                <p:inputText id="ocupantes" required="true" label="Ocupantes"/>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="numeroMesa" value="Mesa:" />
+                    <h:outputText id="mesa" value="mesa.id_mesa" />
+    
+                    <h:outputLabel for="ocupantes" value="Ocupantes:" />
+                    <p:spinner id="ocupantes" value="mesa.ocupantes" min="0" />
+    
+                    <h:outputLabel for="tempo" value="Tempo:" />
+                    <h:outputText id="tempo" value="mesa." />
+    
+                    <h:outputLabel for="total" value="Total:" />
+                    <h:outputText id="total" value="comanda.total" />
+
+                    <p:button type="button" value="Abrir Comanda" styleClass="ui-button-success" outcome="comanda.xhtml" style="margin-top:10px;" action="#{mesaControl.salvar}" update="@form"/>
+                </h:panelGrid>
+
                 
-                <h:outputLabel for="data" value="Data: "/>
-                <p:inputText id="data" required="true" label="Data"/>
-
-                <h:outputLabel for="hora" value="Hora: "/>
-                <p:inputText id="hora" required="true" label="Hora"/>
-
-                <h:outputLabel for="total" value="Total: "/>
-                <p:inputText id="total" required="true" label="Total"/>
-
-                <p:button type="button" value="Abrir Comanda" styleClass="ui-button-success" outcome="comanda.xhtml" />
             </p:dialog>
         </p:panel>
     </h:form>

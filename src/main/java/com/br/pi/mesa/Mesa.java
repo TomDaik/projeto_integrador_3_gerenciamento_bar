@@ -1,9 +1,10 @@
-package com.br.pi.home;
+package com.br.pi.mesa;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,18 +16,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Produto {
+@Table(name = "mesa")//??????????
+public class Mesa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_produto;
+    private Integer id_mesa;
 
-    private String nome;
+    private Integer ocupantes;
 
-    //imagem(criar)
+    //data_reserva(criar)
 
-    private Float preco;
+    //horario_reserva(criar)
 
-    //metodo mostrarCardapio (criar)
+    //enum status(criar)
 
+    //metodo atualizarMapa(criar)
 }

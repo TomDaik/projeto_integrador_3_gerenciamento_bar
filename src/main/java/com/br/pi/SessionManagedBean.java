@@ -1,4 +1,4 @@
-package com.br.pi.home;
+package com.br.pi;
 
 import javax.faces.bean.SessionScoped;
 

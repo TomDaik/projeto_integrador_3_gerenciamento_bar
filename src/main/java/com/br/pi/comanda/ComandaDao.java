@@ -1,4 +1,4 @@
-package com.br.pi.home.comanda;
+package com.br.pi.comanda;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

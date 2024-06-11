@@ -1,4 +1,4 @@
-package com.br.pi.home;
+package com.br.pi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,10 +21,10 @@ import com.sun.faces.config.ConfigureListener;
 import com.sun.faces.config.FacesInitializer;
 
 @SpringBootApplication
-public class HomeApplication implements ServletContextInitializer {
+public class PIApplication implements ServletContextInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(HomeApplication.class, args);
+        SpringApplication.run(PIApplication.class, args);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class HomeApplication implements ServletContextInitializer {
 
         Set<Class<?>> clazz = new HashSet<Class<?>>();
 
-        clazz.add(HomeApplication.class);
+        clazz.add(PIApplication.class);
 
         FacesInitializer facesInitializer = new FacesInitializer();
         facesInitializer.onStartup(clazz, servletContext);

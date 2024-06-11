@@ -1,4 +1,4 @@
-package com.br.pi.home.mesa;
+package com.br.pi.produto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,20 +19,20 @@ import lombok.Setter;
 @Component
 @SessionScoped
 @Controller
-public class MesaControl {
-    private Mesa mesa = new Mesa();
+public class ProdutoControl {
+    private Produto produto = new Produto();
 
-    private List<Mesa> mesas = new ArrayList<>();
+    private List<Produto> produtos = new ArrayList<>();
 
     @Autowired
-    private MesaDao mesaDao;
+    private ProdutoDao produtoDao;
 
     @PostConstruct
     public void init(){
-        mesas = mesaDao.findAll();
+        produtos = produtoDao.findAll();
     }
 
-    public void salvar(RowEditEvent<Mesa> event) {
-        mesaDao.save(event.getObject());
+    public void salvar(RowEditEvent<Produto> event) {
+        produtoDao.save(event.getObject());
     }    
 }

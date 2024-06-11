@@ -1,15 +1,14 @@
-package com.br.pi.home.item;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.br.pi.item;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import com.br.pi.home.Produto;
-import com.br.pi.home.comanda.Comanda;
+import com.br.pi.comanda.Comanda;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,12 +20,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "item")//???????
 public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_item;
 
+    @ManyToOne//??????
+    @JoinColumn(name = "id_comanda")//?????
     private Comanda comanda = new Comanda();
 
     //private Produto produto = new Produto();

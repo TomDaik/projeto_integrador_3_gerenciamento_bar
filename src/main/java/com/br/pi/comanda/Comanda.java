@@ -1,11 +1,14 @@
-package com.br.pi.home.comanda;
+package com.br.pi.comanda;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import com.br.pi.home.mesa.Mesa;
+import com.br.pi.mesa.Mesa;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,12 +20,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "comanda")//?????????
 public class Comanda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_comanda;
 
+    @ManyToOne//??????????
+    @JoinColumn(name = "id_mesa")//??????????
     private Mesa mesa = new Mesa();//?????????? object
 
     private Float valor_total;

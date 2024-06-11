@@ -1,4 +1,4 @@
-package com.br.pi.home.item;
+package com.br.pi.item;
 
 import java.util.ArrayList;
 import java.util.List;

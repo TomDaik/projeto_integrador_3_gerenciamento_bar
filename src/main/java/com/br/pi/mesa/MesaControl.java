@@ -1,4 +1,4 @@
-package com.br.pi.home.comanda;
+package com.br.pi.mesa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,21 +19,20 @@ import lombok.Setter;
 @Component
 @SessionScoped
 @Controller
-public class ComandaControl {
-    private Comanda comanda = new Comanda();
+public class MesaControl {
+    private Mesa mesa = new Mesa();
 
-    private List<Comanda> comandas = new ArrayList<>();
+    private List<Mesa> mesas = new ArrayList<>();
 
     @Autowired
-    private ComandaDao comandaDao;
+    private MesaDao mesaDao;
 
     @PostConstruct
     public void init(){
-        comandas = comandaDao.findAll();
+        mesas = mesaDao.findAll();
     }
 
-    public void salvar(RowEditEvent<Comanda> event) {
-        comandaDao.save(event.getObject());
+    public void salvar(RowEditEvent<Mesa> event) {
+        mesaDao.save(event.getObject());
     }    
-
 }
