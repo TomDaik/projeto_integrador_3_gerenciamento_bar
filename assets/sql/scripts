@@ -34,3 +34,18 @@ create table if not exists item(
     foreign key (id_comanda_fk) references comanda(id_comanda),
     lista_produto varchar
 );
+
+INSERT into produto (id_produto, nome, preço, categoria) values
+(1, 'Crostini com geleia de pimenta', 12.00, 'ENTRADA'),
+(2, 'Crostini com pesto',  11.50, 'ENTRADA'),
+(3, 'Focalie caprese com geleia de pimenta', 15.00, 'ENTRADA'),
+(4, 'Focalie caprese com pesto',  14.50, 'ENTRADA'),
+(5, 'Focalie de bacon com geleia de pimenta', 16.00, 'ENTRADA'),
+(6, 'Focalie de bacon com pesto', 15.00, 'ENTRADA'),
+(7, 'Baiano Bom', 50, 'PIZZA'),
+(8, 'Calabresa', 44, 'PIZZA'),
+(9, 'Hulk Vegs', 48, 'PIZZA'),
+(10, 'Linda', 56, 'PIZZA'),
+(11, 'Pepperoni',52, 'PIZZA'),
+(12, 'Quatro Queijos', 54, 'PIZZA'),
+(13, 'Rucuveta', 46, 'PIZZA')

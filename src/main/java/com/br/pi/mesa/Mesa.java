@@ -1,10 +1,16 @@
 package com.br.pi.mesa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.br.pi.comanda.Comanda;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,8 +21,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Entity
-@Table(name = "mesa")//??????????
+@Table(name = "mesa") // ??????????
 public class Mesa {
 
     @Id
@@ -25,11 +32,8 @@ public class Mesa {
 
     private Integer ocupantes;
 
-    //data_reserva(criar)
+    private MesaStatus mesaStatus;
 
-    //horario_reserva(criar)
-
-    //enum status(criar)
-
-    //metodo atualizarMapa(criar)
+    @OneToMany
+    private List<Comanda> comandas = new ArrayList<>();
 }

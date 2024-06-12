@@ -56,7 +56,8 @@ public class PIApplication implements ServletContextInitializer {
         public void contextInitialized(ServletContextEvent sce) {
             super.contextInitialized(sce);
 
-            ApplicationFactory factory = (ApplicationFactory) FactoryFinder.getFactory(FactoryFinder.APPLICATION_FACTORY);
+            ApplicationFactory factory = (ApplicationFactory) FactoryFinder
+                    .getFactory(FactoryFinder.APPLICATION_FACTORY);
             Application app = factory.getApplication();
 
             app.addELResolver(new SpringBeanFacesELResolver());

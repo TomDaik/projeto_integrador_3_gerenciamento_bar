@@ -9,11 +9,47 @@
 </h:head>
 <h:body>
     <h:form>
-        <p:panel header="Mesa ID + ID">
-            <div class="card">
-               Comanda
-            </div>
-        </p:panel>
-    </h:form>
+    <p:panel header="Comanda: Mesa + ID">
+        <div class="card">
+            <h5>ID</h5>
+            <p:inputText id="idInput" />
+            <h5>Nome</h5>
+            <p:inputText id="nomeInput" />
+            <p:button value="buscar" /> 
+            <h5>Quantidade</h5>
+            <p:inputText id="quantidadeInput" />
+            <h5>Preço Unitário</h5>
+            <p:inputText id="precoInput" />
+        </div>
+    </p:panel>
+
+    <h:panelGrid columns="1" style="margin-top: 10px;">
+        <p:dataTable var="item" value="#{bean.itensSelecionados}" emptyMessage="Nenhum item selecionado">
+            <p:column headerText="ID">
+                <h:outputText value="#{item.id}" />
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{item.nome}" />
+            </p:column>
+            <p:column headerText="Preço Unitário">
+                <h:outputText value="#{item.precoUnitario}" />
+            </p:column>
+            <p:column headerText="Quantidade">
+                <h:outputText value="#{item.quantidade}" />
+            </p:column>
+            <p:column headerText="Sub Total">
+                <h:outputText value="#{item.sub_total}" />
+            </p:column>
+        </p:dataTable>
+    </h:panelGrid>
+
+    <div style="margin-top: 10px;">
+        <p:commandButton value="Adicionar Item" action="#{bean.adicionarItem}" update="@form"/>
+        <p:button value="Finalizar Venda" /> 
+        <p:button value="Cancelar Mesa" /> 
+        <p:button value="Sair da Comanda" />
+    </div>
+</h:form>
+
 </h:body>
 </html>
