@@ -1,10 +1,6 @@
 create table if not exists mesa(
     id_mesa int primary key,
-    ocupantes int,
-    data_reserva date,
-    horario_reserva time,
-    status_mesa int,
-    lista_comandas varchar
+    status_mesa varchar
 );
 
 create table if not exists comanda(
@@ -13,7 +9,9 @@ create table if not exists comanda(
     status_comanda varchar,
     id_mesa_fk int,
     foreign key (id_mesa_fk) references mesa(id_mesa),
-    lista_itens varchar
+    data_reserva date,
+    horario_reserva time,
+    ocupante int
 );
 
 create table if not exists produto(
@@ -31,8 +29,7 @@ create table if not exists item(
     id_produto_fk int,
     id_comanda_fk int,
     foreign key (id_produto_fk) references produto(id_produto),
-    foreign key (id_comanda_fk) references comanda(id_comanda),
-    lista_produto varchar
+    foreign key (id_comanda_fk) references comanda(id_comanda)
 );
 
 INSERT into produto (id_produto, nome, preço, categoria) values
@@ -67,3 +64,20 @@ INSERT into produto (id_produto, nome, preço, categoria) values
 (29, 'Margarita', 13.00, 'DRINK'),
 (30, 'Aperol Spritz', 16.00, 'DRINK'),
 (31, 'Gin Tônica', 14.00, 'DRINK');
+
+insert into mesa(id_mesa, status_mesa) values
+(1, 'LIVRE'),
+(2, 'LIVRE'),
+(3, 'LIVRE'),
+(4, 'LIVRE'),
+(5, 'LIVRE'),
+(6, 'LIVRE'),
+(7, 'LIVRE'),
+(8, 'LIVRE'),
+(9, 'LIVRE'),
+(10, 'LIVRE'),
+(11, 'LIVRE'),
+(12, 'LIVRE'),
+(13, 'LIVRE'),
+(14, 'LIVRE'),
+(15, 'LIVRE');

@@ -1,48 +1,91 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-    <title>Layout com Três Partes</title>
-    <h:outputStylesheet name="styles.css" />
+    <title>Comanda: Mesa 01</title>
+    <h:outputStylesheet library="css" name="styles.css" />
 </h:head>
 <h:body>
     <h:form>
-        <h1>Layout com Três Partes</h1>
-        
-        <div class="container">
-            <!-- Coluna Esquerda -->
-            <div class="left-column">
-                <h2>Coluna Esquerda</h2>
-                <h:graphicImage name="images/brazil.png" alt="Brazil" styleClass="bandeira" />
-                <h:graphicImage name="images/usa.png" alt="USA" styleClass="bandeira" />
-                <h:graphicImage name="images/france.png" alt="France" styleClass="bandeira" />
-                <h:graphicImage name="images/germany.png" alt="Germany" styleClass="bandeira" />
+        <div class="main-container">
+            <!-- Cabeçalho -->
+            <div class="header">
+                <h:outputText value="COMANDA: Mesa 01" />
             </div>
-            
-            <!-- Coluna Direita -->
-            <div class="right-column">
-                <h2>Coluna Direita</h2>
-                <p:dataTable value="#{layoutBean.emptyList}" var="item" style="width:100%">
-                    <p:column headerText="Coluna 1">
-                        #{item.coluna1}
-                    </p:column>
-                    <p:column headerText="Coluna 2">
-                        #{item.coluna2}
-                    </p:column>
-                    <p:column headerText="Coluna 3">
-                        #{item.coluna3}
-                    </p:column>
-                </p:dataTable>
+            <div class="content">
+                <!-- Cardápio Rápido -->
+                <div class="menu">
+                    <p:panel header="Cardápio Rápido">
+                        <h:panelGrid columns="2" style="width: 100%;">
+                            <h:panelGrid columns="1" style="width: 100%;">
+                                <p:commandButton value="REFRIGERANTE LATA COCA" styleClass="menuButton" />
+                                <p:commandButton value="HAMBURGER" styleClass="menuButton" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" style="width: 100%;">
+                                <p:commandButton value="X BACON" styleClass="menuButton" />
+                                <p:commandButton value="REFRIGERANTE 1L SPRITE" styleClass="menuButton" />
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+                <!-- Área de Comanda -->
+                <div class="comanda">
+                    <h:panelGrid columns="3" style="width: 100%;">
+                        <h:outputLabel value="Cliente" for="cliente" />
+                        <p:inputText id="cliente" value="#{comandaBean.cliente}" style="width: 100%;" />
+                        <p:commandButton value="Buscar" action="#{comandaBean.buscarCliente}" />
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="3" style="width: 100%;">
+                        <h:outputLabel value="Código" for="codigo" />
+                        <p:inputText id="codigo" value="#{comandaBean.codigo}" />
+                        <h:outputLabel value="Descrição do Item" for="descricaoItem" />
+                        <p:inputText id="descricaoItem" value="#{comandaBean.descricaoItem}" />
+                        <p:commandButton value="Buscar" action="#{comandaBean.buscarItem}" />
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="3" style="width: 100%; margin-top: 10px;">
+                        <h:outputLabel value="QUANTIDADE" styleClass="quantityHeader" />
+                        <h:outputLabel value="PREÇO UNITÁRIO" styleClass="priceHeader" />
+                        <p:commandButton value="Excluir Item" action="#{comandaBean.excluirItem}" />
+                        <p:inputText value="#{comandaBean.quantidade}" />
+                        <p:inputText value="#{comandaBean.precoUnitario}" />
+                    </h:panelGrid>
+
+                    <p:dataTable value="#{comandaBean.itens}" var="item" style="width: 100%;" rowKey="#{item.id}">
+                        <p:column headerText="Item">
+                            <h:outputText value="#{item.id}" />
+                        </p:column>
+                        <p:column headerText="Descrição">
+                            <h:outputText value="#{item.descricao}" />
+                        </p:column>
+                        <p:column headerText="Preço Unit.">
+                            <h:outputText value="#{item.precoUnitario}" />
+                        </p:column>
+                        <p:column headerText="Quantidade">
+                            <h:outputText value="#{item.quantidade}" />
+                        </p:column>
+                        <p:column headerText="Subtotal">
+                            <h:outputText value="#{item.subtotal}" />
+                        </p:column>
+                    </p:dataTable>
+                </div>
+                <!-- Botões de Ação -->
+                <div class="actions">
+                    <p:commandButton value="Sair da Comanda" action="#{comandaBean.sairComanda}"
+                        styleClass="actionButton" />
+                    <p:commandButton value="Imprimir Preparo" action="#{comandaBean.imprimirPreparo}"
+                        styleClass="actionButton" />
+                    <p:commandButton value="Finalizar Venda" action="#{comandaBean.finalizarVenda}"
+                        styleClass="actionButton" />
+                    <p:commandButton value="Cancelar Mesa" action="#{comandaBean.cancelarMesa}"
+                        styleClass="actionButton" />
+                    <h:outputText value="Total" styleClass="totalLabel" />
+                    <h:outputText value="#{comandaBean.total}" styleClass="totalValue" />
+                </div>
             </div>
-        </div>
-        
-        <!-- Parte Inferior -->
-        <div class="bottom-section">
-            <h2>Parte Inferior</h2>
-            <p>Conteúdo adicional pode ser colocado aqui.</p>
         </div>
     </h:form>
 </h:body>
+
 </html>
