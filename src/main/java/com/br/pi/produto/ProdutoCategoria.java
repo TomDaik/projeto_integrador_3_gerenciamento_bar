@@ -3,6 +3,7 @@ package com.br.pi.produto;
 public enum ProdutoCategoria {
     ENTRADA,
     PIZZA,
-    SOBREMESA,
-    BEBIDA
+    PIZZA_DOCE,
+    BEBIDA,
+    DRINK
 }

@@ -9,7 +9,7 @@ create table if not exists mesa(
 
 create table if not exists comanda(
     id_comanda int primary key,
-    valor_total decimal(10,2),
+    valor_total decimal(13,2),
     status_comanda varchar,
     id_mesa_fk int,
     foreign key (id_mesa_fk) references mesa(id_mesa),
@@ -19,7 +19,7 @@ create table if not exists comanda(
 create table if not exists produto(
     id_produto int primary key,
     nome varchar,
-    preço decimal(10,2),
+    preço decimal(13,2),
     categoria varchar,
     imagem varchar
 );
@@ -27,7 +27,7 @@ create table if not exists produto(
 create table if not exists item(
     id_item int primary key,
     quantidade int,
-    sub_total decimal(10,2),
+    sub_total decimal(13,2),
     id_produto_fk int,
     id_comanda_fk int,
     foreign key (id_produto_fk) references produto(id_produto),
@@ -42,10 +42,28 @@ INSERT into produto (id_produto, nome, preço, categoria) values
 (4, 'Focalie caprese com pesto',  14.50, 'ENTRADA'),
 (5, 'Focalie de bacon com geleia de pimenta', 16.00, 'ENTRADA'),
 (6, 'Focalie de bacon com pesto', 15.00, 'ENTRADA'),
-(7, 'Baiano Bom', 50, 'PIZZA'),
-(8, 'Calabresa', 44, 'PIZZA'),
-(9, 'Hulk Vegs', 48, 'PIZZA'),
-(10, 'Linda', 56, 'PIZZA'),
-(11, 'Pepperoni',52, 'PIZZA'),
-(12, 'Quatro Queijos', 54, 'PIZZA'),
-(13, 'Rucuveta', 46, 'PIZZA')
+(7, 'Baiano Bom', 50.00, 'PIZZA'),
+(8, 'Calabresa', 44.00, 'PIZZA'),
+(9, 'Hulk Vegs', 48.00, 'PIZZA'),
+(10, 'Linda', 56.00, 'PIZZA'),
+(11, 'Pepperoni', 52.00, 'PIZZA'),
+(12, 'Quatro Queijos', 54.00, 'PIZZA'),
+(13, 'Pizza de Chocolate com Morango', 44.00, 'PIZZA_DOCE'),
+(14, 'Pizza de Banana com Canela e Doce de Leite', 40.00, 'PIZZA_DOCE'),
+(15, 'Pizza de Brigadeiro com Granulado', 46.00, 'PIZZA_DOCE'),
+(16, 'Pizza de Maçã com Canela e Caramelo', 43.00, 'PIZZA_DOCE'),
+(17, 'Cerveja Artesanal', 10.00, 'BEBIDA'),
+(18, 'Suco de Laranja Natural', 8.00, 'BEBIDA'),
+(19, 'Limonada', 6.00, 'BEBIDA'),
+(20, 'Refrigerante', 5.00, 'BEBIDA'),
+(21, 'Água com Gás', 4.00, 'BEBIDA'),
+(22, 'Água Sem Gás', 3.50, 'BEBIDA'),
+(23, 'Chá Gelado', 7.00, 'BEBIDA'),
+(24, 'Café Expresso', 5.50, 'BEBIDA'),
+(25, 'Chocolate Quente', 6.50, 'BEBIDA'),
+(26, 'Caipirinha', 12.00, 'DRINK'),
+(27, 'Mojito', 14.00, 'DRINK'),
+(28, 'Piña Colada', 15.00, 'DRINK'),
+(29, 'Margarita', 13.00, 'DRINK'),
+(30, 'Aperol Spritz', 16.00, 'DRINK'),
+(31, 'Gin Tônica', 14.00, 'DRINK');
