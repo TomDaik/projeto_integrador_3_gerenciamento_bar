@@ -3,16 +3,20 @@
     xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>MESAS</title>
+    <style>
+        body{margin: 0;
+            padding: 0;}
+    </style>
 </h:head>
 <h:body>
     <h:form>
         <p:panel header="Mesas">
             <div class="card">
-                <p:button type="button" value="MESA 1" styleClass="ui-button-success" outcome="home.xhtml" />
+                
                 <p:commandButton value="Mesa 2" type="button" styleClass="ui-button-success"
                     onclick="PF('dlg2').show()" />
             </div>
-            <p:dialog header="MESA + (ID)" widgetVar="dlg2" minHeight="40" width="280" showEffect="fade" modal="true"
+            <p:dialog header="MESA + (ID)" widgetVar="popup" minHeight="40" width="280" showEffect="fade" modal="true"
                 closeOnEscape="true">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="numeroMesa" value="Mesa:" />
