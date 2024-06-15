@@ -28,12 +28,12 @@ public class ComandaControl {
     private ComandaDao comandaDao;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         comandas = comandaDao.findAll();
     }
 
     public void salvar(RowEditEvent<Comanda> event) {
         comandaDao.save(event.getObject());
-    }    
+    }
 
 }

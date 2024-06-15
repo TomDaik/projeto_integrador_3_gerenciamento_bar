@@ -55,7 +55,7 @@
                     <p:spinner id="ocupantes" value="mesa.ocupantes" min="0" />
 
                     <h:outputLabel for="tempo" value="Tempo:" />
-                    <h:outputText id="tempo" value="mesa." />
+                    <h:outputText id="tempo" value="#{mesasBean.getDateTime()}" />
 
                     <h:outputLabel for="total" value="Total:" />
                     <h:outputText id="total" value="comanda.total" />
