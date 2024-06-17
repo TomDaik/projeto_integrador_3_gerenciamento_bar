@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+    xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     <title>MESAS</title>
     <style>
@@ -8,64 +9,52 @@
             margin: 0;
             padding: 0;
         }
+
+        .card {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card .ui-button {
+            margin: 5px;
+        }
     </style>
 </h:head>
 <h:body>
-    <h:form>
+    <h:form id="form">
+        <!-- Define a remoteCommand to call the bean method -->
+        <p:remoteCommand name="atualizarHorario" action="#{mesaControl.atualizarHorario}" />
+
         <p:panel header="Mesas">
             <div class="card">
-                <p:commandButton value="Mesa 1" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 2" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 3" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 4" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 5" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 6" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 7" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 8" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 9" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 10" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 11" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 12" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 13" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 14" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
-                <p:commandButton value="Mesa 15" type="button" styleClass="ui-button-success"
-                    onclick="PF('popup').show()" />
+                <ui:repeat value="#{mesaControl.mesas}" var="mesa">
+                    <p:commandButton value="Mesa #{mesa.id_mesa}" type="button" styleClass="ui-button-success"
+                        onclick="PF('popup_#{mesa.id_mesa}').show();" action="#{mesaControl.selecionarMesa(mesa)}"
+                        update=":form:dialogContent" />
+
+                    <p:dialog id="dialog_#{mesa.id_mesa}" header="MESA #{mesa.id_mesa}"
+                        widgetVar="popup_#{mesa.id_mesa}" minHeight="40" width="350" showEffect="fade" modal="true"
+                        closeOnEscape="true">
+                        <h:panelGrid id="dialogContent_#{mesa.id_mesa}" columns="2" cellpadding="5">
+                            <h:outputLabel for="numeroMesa" value="Mesa:" />
+                            <h:outputText id="numeroMesa_#{mesa.id_mesa}" value="#{mesa.id_mesa}" />
+
+                            <p:outputLabel for="ocupantes" value="Ocupantes" />
+                            <p:spinner id="ocupantes" value="0" min="0" />
+
+                            <h:outputLabel for="tempo" value="Horário chegada:" />
+                            <h:outputText id="tempo_#{mesa.id_mesa}" value="#{mesasBean.getTime()}" />
+
+                            <h:outputLabel for="total" value="Total:" />
+                            <h:outputText id="total_#{mesa.id_mesa}" value="#{comanda.total}" />
+
+                            <p:button type="button" value="Abrir Comanda" styleClass="ui-button-success"
+                                outcome="comanda.xhtml" style="margin-top:10px" action="#{mesaControl.salvar}"
+                                update="@form" />
+                        </h:panelGrid>
+                    </p:dialog>
+                </ui:repeat>
             </div>
-            <p:dialog header="MESA + (ID)" widgetVar="popup" minHeight="40" width="280" showEffect="fade" modal="true"
-                closeOnEscape="true">
-                <h:panelGrid columns="2" cellpadding="5">
-                    <h:outputLabel for="numeroMesa" value="Mesa:" />
-                    <h:outputText id="mesa" value="mesa.id_mesa" />
-
-                    <h:outputLabel for="ocupantes" value="Ocupantes:" />
-                    <p:spinner id="ocupantes" value="mesa.ocupantes" min="0" />
-
-                    <h:outputLabel for="tempo" value="Tempo:" />
-                    <h:outputText id="tempo" value="#{mesasBean.getDateTime()}" />
-
-                    <h:outputLabel for="total" value="Total:" />
-                    <h:outputText id="total" value="comanda.total" />
-
-                    <p:button type="button" value="Abrir Comanda" styleClass="ui-button-success" outcome="comanda.xhtml"
-                        style="margin-top:10px;" action="#{mesaControl.salvar}" update="@form" />
-                </h:panelGrid>
-
-
-            </p:dialog>
         </p:panel>
     </h:form>
 </h:body>
