@@ -1,6 +1,5 @@
 create table if not exists mesa(
     id_mesa int primary key,
-    status_mesa varchar
 );
 
 create table if not exists comanda(
@@ -32,52 +31,63 @@ create table if not exists item(
     foreign key (id_comanda_fk) references comanda(id_comanda)
 );
 
-INSERT into produto (id_produto, nome, preço, categoria) values
-(1, 'Crostini com geleia de pimenta', 12.00, 'ENTRADA'),
-(2, 'Crostini com pesto',  11.50, 'ENTRADA'),
-(3, 'Focalie caprese com geleia de pimenta', 15.00, 'ENTRADA'),
-(4, 'Focalie caprese com pesto',  14.50, 'ENTRADA'),
-(5, 'Focalie de bacon com geleia de pimenta', 16.00, 'ENTRADA'),
-(6, 'Focalie de bacon com pesto', 15.00, 'ENTRADA'),
-(7, 'Baiano Bom', 50.00, 'PIZZA'),
-(8, 'Calabresa', 44.00, 'PIZZA'),
-(9, 'Hulk Vegs', 48.00, 'PIZZA'),
-(10, 'Linda', 56.00, 'PIZZA'),
-(11, 'Pepperoni', 52.00, 'PIZZA'),
-(12, 'Quatro Queijos', 54.00, 'PIZZA'),
-(13, 'Pizza de Chocolate com Morango', 44.00, 'PIZZA_DOCE'),
-(14, 'Pizza de Banana com Canela e Doce de Leite', 40.00, 'PIZZA_DOCE'),
-(15, 'Pizza de Brigadeiro com Granulado', 46.00, 'PIZZA_DOCE'),
-(16, 'Pizza de Maçã com Canela e Caramelo', 43.00, 'PIZZA_DOCE'),
-(17, 'Cerveja Artesanal', 10.00, 'BEBIDA'),
-(18, 'Suco de Laranja Natural', 8.00, 'BEBIDA'),
-(19, 'Limonada', 6.00, 'BEBIDA'),
-(20, 'Refrigerante', 5.00, 'BEBIDA'),
-(21, 'Água com Gás', 4.00, 'BEBIDA'),
-(22, 'Água Sem Gás', 3.50, 'BEBIDA'),
-(23, 'Chá Gelado', 7.00, 'BEBIDA'),
-(24, 'Café Expresso', 5.50, 'BEBIDA'),
-(25, 'Chocolate Quente', 6.50, 'BEBIDA'),
-(26, 'Caipirinha', 12.00, 'DRINK'),
-(27, 'Mojito', 14.00, 'DRINK'),
-(28, 'Piña Colada', 15.00, 'DRINK'),
-(29, 'Margarita', 13.00, 'DRINK'),
-(30, 'Aperol Spritz', 16.00, 'DRINK'),
-(31, 'Gin Tônica', 14.00, 'DRINK');
+INSERT into produto (id_produto, nome, preco, produto_categoria) values
+(1, 'Crostini com geleia de pimenta', 12.00, 1),
+(2, 'Crostini com pesto',  11.50, 1),
+(3, 'Focalie caprese com geleia de pimenta', 15.00, 1),
+(4, 'Focalie caprese com pesto',  14.50, 1),
+(5, 'Focalie de bacon com geleia de pimenta', 16.00, 1),
+(6, 'Focalie de bacon com pesto', 15.00, 1),
+(7, 'Baiano Bom', 50.00, 2),
+(8, 'Calabresa', 44.00, 2),
+(9, 'Hulk Vegs', 48.00, 2),
+(10, 'Linda', 56.00, 2),
+(11, 'Pepperoni', 52.00, 2),
+(12, 'Quatro Queijos', 54.00, 2),
+(13, 'Pizza de Chocolate com Morango', 44.00, 3),
+(14, 'Pizza de Banana com Canela e Doce de Leite', 40.00, 3),
+(15, 'Pizza de Brigadeiro com Granulado', 46.00, 3),
+(16, 'Pizza de Maçã com Canela e Caramelo', 43.00, 3),
+(17, 'Cerveja Artesanal', 10.00, 4),
+(18, 'Suco de Laranja Natural', 8.00, 4),
+(19, 'Limonada', 6.00, 4),
+(20, 'Refrigerante', 5.00, 4),
+(21, 'Água com Gás', 4.00, 4),
+(22, 'Água Sem Gás', 3.50, 4),
+(23, 'Chá Gelado', 7.00, 4),
+(24, 'Café Expresso', 5.50, 4),
+(25, 'Chocolate Quente', 6.50, 4),
+(26, 'Caipirinha', 12.00, 5),
+(27, 'Mojito', 14.00, 5),
+(28, 'Piña Colada', 15.00, 5),
+(29, 'Margarita', 13.00, 5),
+(30, 'Aperol Spritz', 16.00, 5),
+(31, 'Gin Tônica', 14.00, 5);
 
-insert into mesa(id_mesa, status_mesa) values
-(1, 'LIVRE'),
-(2, 'LIVRE'),
-(3, 'LIVRE'),
-(4, 'LIVRE'),
-(5, 'LIVRE'),
-(6, 'LIVRE'),
-(7, 'LIVRE'),
-(8, 'LIVRE'),
-(9, 'LIVRE'),
-(10, 'LIVRE'),
-(11, 'LIVRE'),
-(12, 'LIVRE'),
-(13, 'LIVRE'),
-(14, 'LIVRE'),
-(15, 'LIVRE');
+select * from mesa m
+
+drop table comanda, comanda_itens, contato, item, mesa, mesa_comandas, produto
+
+insert into mesa(id_mesa) values
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9),
+(10),
+(11),
+(12),
+(13),
+(14),
+(15),
+(16),
+(17),
+(18);
+
+delete from mesa 
+
+drop table mesa, comanda ,comanda_itens , contato , item ,mesa_comandas , produto 

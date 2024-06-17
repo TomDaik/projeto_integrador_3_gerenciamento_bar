@@ -11,11 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Setter
-@Getter
 @Component
 @SessionScoped
 @Controller
@@ -34,5 +29,31 @@ public class ProdutoControl {
 
     public void salvar(RowEditEvent<Produto> event) {
         produtoDao.save(event.getObject());
-    }    
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public ProdutoDao getProdutoDao() {
+        return produtoDao;
+    }
+
+    public void setProdutoDao(ProdutoDao produtoDao) {
+        this.produtoDao = produtoDao;
+    }
+
+
 }

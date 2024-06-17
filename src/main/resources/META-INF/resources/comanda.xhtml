@@ -3,7 +3,6 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Comanda: Mesa 01</title>
-    <h:outputStylesheet library="css" name="styles.css" />
 </h:head>
 <h:body>
     <h:form>
@@ -18,12 +17,19 @@
                     <p:panel header="Cardápio Rápido">
                         <h:panelGrid columns="2" style="width: 100%;">
                             <h:panelGrid columns="1" style="width: 100%;">
-                                <p:commandButton value="REFRIGERANTE LATA COCA" styleClass="menuButton" />
-                                <p:commandButton value="HAMBURGER" styleClass="menuButton" />
+                                <p:commandButton value="Entradas" styleClass="menuButton" />
+                                <p:commandButton value="Pizzas" styleClass="menuButton" />
+                                <p:commandButton value="Pizzas Doces" styleClass="menuButton" />
+                                <p:commandButton value="Bebidas" styleClass="menuButton" />
+                                <p:commandButton value="Drinks" styleClass="menuButton" />
                             </h:panelGrid>
                             <h:panelGrid columns="1" style="width: 100%;">
-                                <p:commandButton value="X BACON" styleClass="menuButton" />
-                                <p:commandButton value="REFRIGERANTE 1L SPRITE" styleClass="menuButton" />
+                               
+                                <ui:repeat value="#{produtoControl.mesas}" var="mesa">
+                                    <p:commandButton value="Mesa #{mesa.id_mesa}" type="button"
+                                        styleClass="ui-button-success" onclick="PF('popup_#{mesa.id_mesa}').show();"
+                                        action="#{mesaControl.selecionarMesa(mesa)}" update=":form:dialogContent" />
+                                </ui:repeat>
                             </h:panelGrid>
                         </h:panelGrid>
                     </p:panel>
