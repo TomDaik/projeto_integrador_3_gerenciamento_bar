@@ -9,11 +9,9 @@ import javax.faces.bean.SessionScoped;
 import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 @Component
 @SessionScoped
-@Controller
 public class ProdutoControl {
     private Produto produto = new Produto();
 
@@ -46,14 +44,5 @@ public class ProdutoControl {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
-
-    public ProdutoDao getProdutoDao() {
-        return produtoDao;
-    }
-
-    public void setProdutoDao(ProdutoDao produtoDao) {
-        this.produtoDao = produtoDao;
-    }
-
 
 }

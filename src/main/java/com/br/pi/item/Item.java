@@ -11,16 +11,6 @@ import javax.persistence.Table;
 import com.br.pi.comanda.Comanda;
 import com.br.pi.produto.Produto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-
 @Entity
 @Table(name = "item") // ???????
 public class Item {
@@ -39,5 +29,46 @@ public class Item {
 
     private Integer quantidade;
 
-    private Float sub_Total;
+    private Float sub_Total = (float)0.0;
+
+    public Integer getId_item() {
+        return id_item;
+    }
+
+    public void setId_item(Integer id_item) {
+        this.id_item = id_item;
+    }
+
+    public Comanda getComanda() {
+        return comanda;
+    }
+
+    public void setComanda(Comanda comanda) {
+        this.comanda = comanda;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Float getSub_Total() {
+        return sub_Total;
+    }
+
+    public void setSub_Total(Float sub_Total) {
+        this.sub_Total = sub_Total;
+    }
+
 }
